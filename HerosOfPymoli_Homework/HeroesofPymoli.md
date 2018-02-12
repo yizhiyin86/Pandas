@@ -22,17 +22,17 @@ pymoli_df.head(10)
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -153,19 +153,6 @@ pymoli_df.head(10)
 ```
 
 
-
-
-    Age          78
-    Gender       78
-    Item ID      78
-    Item Name    78
-    Price        78
-    SN           78
-    dtype: int64
-
-
-
-
 ```python
 #Player Count
 
@@ -183,17 +170,17 @@ total_players_df
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -248,17 +235,17 @@ purchase_analysis_total
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -313,17 +300,17 @@ Gender_Demographics
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -400,17 +387,17 @@ Purchase_Analysis_Gender
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -487,17 +474,17 @@ Age_Demographics
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -594,17 +581,17 @@ Purchase_Analysis_Age
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -714,12 +701,12 @@ top5_spender['Total Purchase Value']=top5_spender['Total Purchase Value'].map('$
 top5_spender
 ```
 
-    /Users/yizhiyin/anaconda3/envs/PythonData/lib/python3.6/site-packages/ipykernel/__main__.py:27: SettingWithCopyWarning: 
+    /Users/yizhiyin/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:27: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-    /Users/yizhiyin/anaconda3/envs/PythonData/lib/python3.6/site-packages/ipykernel/__main__.py:28: SettingWithCopyWarning: 
+    /Users/yizhiyin/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:28: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     
@@ -730,17 +717,17 @@ top5_spender
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -836,17 +823,17 @@ top5_popular_item
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -926,17 +913,17 @@ top5_profitable_item
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
