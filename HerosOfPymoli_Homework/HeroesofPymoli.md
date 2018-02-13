@@ -22,17 +22,17 @@ pymoli_df.head(10)
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -156,8 +156,8 @@ pymoli_df.head(10)
 ```python
 #Player Count
 
-#get total number of players by len
-total_players=len(pymoli_df)
+#get total number of unique players 
+total_players=len(pymoli_df['SN'].unique())
 # print('degbug: total number of players is {}'.format(total_players))
 
 #based on the example given by homework instruction,it seems
@@ -170,17 +170,17 @@ total_players_df
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -193,7 +193,7 @@ total_players_df
   <tbody>
     <tr>
       <th>0</th>
-      <td>780</td>
+      <td>573</td>
     </tr>
   </tbody>
 </table>
@@ -235,17 +235,17 @@ purchase_analysis_total
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -277,10 +277,11 @@ purchase_analysis_total
 #Code in this cell for Gender Demographics
 
 # get the total counts of all genders
-total_gender=pymoli_df['Gender'].count()
+drop_duplicates_pymoli=pymoli_df.drop_duplicates(subset='SN')
+total_gender=drop_duplicates_pymoli['Gender'].count()
 
 #get the counts of each gender
-gender_counts=pymoli_df['Gender'].value_counts()
+gender_counts=drop_duplicates_pymoli['Gender'].value_counts()
 
 #calculate the percentage for each gender
 percentage_each_gender=(gender_counts/total_gender)*100
@@ -300,17 +301,17 @@ Gender_Demographics
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -325,17 +326,17 @@ Gender_Demographics
     <tr>
       <th>Male</th>
       <td>81.15%</td>
-      <td>633</td>
+      <td>465</td>
     </tr>
     <tr>
       <th>Female</th>
-      <td>17.44%</td>
-      <td>136</td>
+      <td>17.45%</td>
+      <td>100</td>
     </tr>
     <tr>
       <th>Other / Non-Disclosed</th>
-      <td>1.41%</td>
-      <td>11</td>
+      <td>1.40%</td>
+      <td>8</td>
     </tr>
   </tbody>
 </table>
@@ -347,7 +348,7 @@ Gender_Demographics
 ```python
 #Purchasing Analysis (Gender)
 
-#get Purchase Count by gender
+#get Purchase Count by gender this should not use original dataframe not one without dupplicate 'SN'
 gender_purchase_counts=pymoli_df.groupby(by='Gender')['Item Name'].count()
 
 #Average Purchase Price by gender
@@ -358,10 +359,10 @@ gender_total_purchaes=pymoli_df.groupby(by='Gender')['Price'].sum()
 
 #Normalized totals by gender
 #According to the Carlos the normalized total by gender is 
-#the total purchase each gender divided by the player count per gender
+#the total purchase each gender divided by the UNIQUE player count per gender
 #Note the number of players for each gender may not be the same as number of purchases each gender
 #some people just play but not buy stuff 
-gender_normalized_total=gender_total_purchaes/pymoli_df['Gender'].value_counts()
+gender_normalized_total=gender_total_purchaes/drop_duplicates_pymoli['Gender'].value_counts()
 
 # print('debug the purchase count by gender is {}\n \
 # the average purchase by gender is {}\n \
@@ -387,17 +388,17 @@ Purchase_Analysis_Gender
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -416,21 +417,21 @@ Purchase_Analysis_Gender
       <td>633</td>
       <td>$2.95</td>
       <td>$1867.68</td>
-      <td>$2.95</td>
+      <td>$4.02</td>
     </tr>
     <tr>
       <th>Female</th>
       <td>136</td>
       <td>$2.82</td>
       <td>$382.91</td>
-      <td>$2.82</td>
+      <td>$3.83</td>
     </tr>
     <tr>
       <th>Other / Non-Disclosed</th>
       <td>11</td>
       <td>$3.25</td>
       <td>$35.74</td>
-      <td>$3.25</td>
+      <td>$4.47</td>
     </tr>
   </tbody>
 </table>
@@ -440,25 +441,26 @@ Purchase_Analysis_Gender
 
 
 ```python
-#Code in this cell is for Age Demographics
+#Code in this cell is for Age Demographics 
+#Need to work on the drop_duplicates dataframe
 
 #get the oldest player's age to set up the upper-bound of the bin
-oldest=int(pymoli_df['Age'].max())
+oldest=int(drop_duplicates_pymoli['Age'].max())
 
 # set up bins
 bins=[0,9,14,19,24,29,34,39,oldest]
 bin_names=['<10','10-14','15-19','20-24','25-29','30-34','35-39','40+']
-pymoli_df['Age Group']=pd.cut(pymoli_df['Age'],bins=bins,labels=bin_names)
+drop_duplicates_pymoli['Age Group']=pd.cut(drop_duplicates_pymoli['Age'],bins=bins,labels=bin_names)
 
 #debug
 # pymoli_df['Age Group'].count()
 # pymoli_df['Age'].count()==pymoli_df['Age Group'].count()
 
 #get number of players of each age group
-age_group_player_count=pymoli_df['Age Group'].value_counts()
+age_group_player_count=drop_duplicates_pymoli['Age Group'].value_counts()
 
 #calculate the percentage of players of each age group
-age_group_player_percentage=(pymoli_df['Age Group'].value_counts()/total_players)*100
+age_group_player_percentage=(drop_duplicates_pymoli['Age Group'].value_counts()/total_players)*100
 
 #make a dataframe for Age Demographics
 Age_Demographics=pd.DataFrame({'Percentage of Players':age_group_player_percentage,'Total Count':age_group_player_count},
@@ -468,23 +470,31 @@ Age_Demographics['Percentage of Players']=Age_Demographics['Percentage of Player
 
 
 Age_Demographics
+
 ```
+
+    /Users/yizhiyin/anaconda3/envs/PythonData/lib/python3.6/site-packages/ipykernel/__main__.py:10: SettingWithCopyWarning: 
+    A value is trying to be set on a copy of a slice from a DataFrame.
+    Try using .loc[row_indexer,col_indexer] = value instead
+    
+    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+
 
 
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -498,43 +508,43 @@ Age_Demographics
   <tbody>
     <tr>
       <th>&lt;10</th>
-      <td>3.59%</td>
-      <td>28</td>
+      <td>3.32%</td>
+      <td>19</td>
     </tr>
     <tr>
       <th>10-14</th>
-      <td>4.49%</td>
-      <td>35</td>
+      <td>4.01%</td>
+      <td>23</td>
     </tr>
     <tr>
       <th>15-19</th>
-      <td>17.05%</td>
-      <td>133</td>
+      <td>17.45%</td>
+      <td>100</td>
     </tr>
     <tr>
       <th>20-24</th>
-      <td>43.08%</td>
-      <td>336</td>
+      <td>45.20%</td>
+      <td>259</td>
     </tr>
     <tr>
       <th>25-29</th>
-      <td>16.03%</td>
-      <td>125</td>
+      <td>15.18%</td>
+      <td>87</td>
     </tr>
     <tr>
       <th>30-34</th>
-      <td>8.21%</td>
-      <td>64</td>
+      <td>8.20%</td>
+      <td>47</td>
     </tr>
     <tr>
       <th>35-39</th>
-      <td>5.38%</td>
-      <td>42</td>
+      <td>4.71%</td>
+      <td>27</td>
     </tr>
     <tr>
       <th>40+</th>
-      <td>2.18%</td>
-      <td>17</td>
+      <td>1.92%</td>
+      <td>11</td>
     </tr>
   </tbody>
 </table>
@@ -545,6 +555,10 @@ Age_Demographics
 
 ```python
 #Code in this cell is for Purchasing Analysis (Age)
+#Need to mostly work on the original dataframe because one player can buy multiple items
+
+#Need to cut original dataframe by age group
+pymoli_df['Age Group']=pd.cut(pymoli_df['Age'],bins=bins,labels=bin_names)
 
 #get purchase_count by aged_group
 age_group_purchase_count=pymoli_df.groupby(by='Age Group')['Item Name'].count()
@@ -554,8 +568,8 @@ age_group_ave_price=pymoli_df.groupby(by='Age Group')['Price'].mean()
 age_group_total_purchase=pymoli_df.groupby(by='Age Group')['Price'].sum()
 
 ##Normalized totals by age_group, normalized totals by age_group is
-#the total purchase each age_group divided by the player count per age_group
-age_group_normalized_total=age_group_total_purchase/pymoli_df['Age Group'].value_counts()
+#the total purchase each age_group divided by the UNIQUE player count per age_group
+age_group_normalized_total=age_group_total_purchase/age_group_player_count
 
 # print('debug the purchase count by age_group is {}\n \
 # the average purchase by age_group is {}\n \
@@ -581,17 +595,17 @@ Purchase_Analysis_Age
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -610,56 +624,56 @@ Purchase_Analysis_Age
       <td>28</td>
       <td>$2.98</td>
       <td>$83.46</td>
-      <td>$2.98</td>
+      <td>$4.39</td>
     </tr>
     <tr>
       <th>10-14</th>
       <td>35</td>
       <td>$2.77</td>
       <td>$96.95</td>
-      <td>$2.77</td>
+      <td>$4.22</td>
     </tr>
     <tr>
       <th>15-19</th>
       <td>133</td>
       <td>$2.91</td>
       <td>$386.42</td>
-      <td>$2.91</td>
+      <td>$3.86</td>
     </tr>
     <tr>
       <th>20-24</th>
       <td>336</td>
       <td>$2.91</td>
       <td>$978.77</td>
-      <td>$2.91</td>
+      <td>$3.78</td>
     </tr>
     <tr>
       <th>25-29</th>
       <td>125</td>
       <td>$2.96</td>
       <td>$370.33</td>
-      <td>$2.96</td>
+      <td>$4.26</td>
     </tr>
     <tr>
       <th>30-34</th>
       <td>64</td>
       <td>$3.08</td>
       <td>$197.25</td>
-      <td>$3.08</td>
+      <td>$4.20</td>
     </tr>
     <tr>
       <th>35-39</th>
       <td>42</td>
       <td>$2.84</td>
       <td>$119.40</td>
-      <td>$2.84</td>
+      <td>$4.42</td>
     </tr>
     <tr>
       <th>40+</th>
       <td>17</td>
       <td>$3.16</td>
       <td>$53.75</td>
-      <td>$3.16</td>
+      <td>$4.89</td>
     </tr>
   </tbody>
 </table>
@@ -670,6 +684,7 @@ Purchase_Analysis_Age
 
 ```python
 #Code in this cell is for Top Spenders
+#Need to use the original dataframe
 
 #Get the total purchase value per spender
 spender_total_purchase=pymoli_df.groupby(by='SN')['Price'].sum()
@@ -688,8 +703,9 @@ spender_ave_price=pymoli_df.groupby(by='SN')['Price'].mean()
 Purchase_Analysis_Spender=pd.DataFrame({'Purchase Count':spender_purchase_count,'Average Purchase Price':spender_ave_price,
                                        'Total Purchase Value':spender_total_purchase},
                                        columns=['Purchase Count','Average Purchase Price','Total Purchase Value'])
+
 #Sort dataframe Purchase_Analysis_Spender by Total Purchase Value starting from the largest
-Sorted_Spender=Purchase_Analysis_Spender.sort_values(by='Total Purchase Value',ascending=False)
+Sorted_Spender=Purchase_Analysis_Spender.sort_values(by=['Total Purchase Value'],ascending=False)
 
 #top 5 spenders can be subset by using head of Sorted_Spender
 top5_spender=Sorted_Spender.iloc[0:5,:]
@@ -701,12 +717,12 @@ top5_spender['Total Purchase Value']=top5_spender['Total Purchase Value'].map('$
 top5_spender
 ```
 
-    /Users/yizhiyin/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:27: SettingWithCopyWarning: 
+    /Users/yizhiyin/anaconda3/envs/PythonData/lib/python3.6/site-packages/ipykernel/__main__.py:29: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-    /Users/yizhiyin/anaconda3/lib/python3.6/site-packages/ipykernel_launcher.py:28: SettingWithCopyWarning: 
+    /Users/yizhiyin/anaconda3/envs/PythonData/lib/python3.6/site-packages/ipykernel/__main__.py:30: SettingWithCopyWarning: 
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
     
@@ -717,17 +733,17 @@ top5_spender
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -785,6 +801,7 @@ top5_spender
 
 ```python
 #Code in this cell is for Most Popular Items
+#Need to use the original dataframe
 
 #group item by item ID 
 #get item purchase count
@@ -823,17 +840,17 @@ top5_popular_item
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -913,17 +930,17 @@ top5_profitable_item
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
